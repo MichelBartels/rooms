@@ -1,0 +1,5 @@
+(library
+ (name load_rooms)
+ (libraries lwt.unix core yojson caqti caqti-lwt caqti-driver-sqlite3)
+ (preprocess
+  (pps ppx_deriving_yojson)))

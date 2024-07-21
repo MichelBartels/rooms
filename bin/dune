@@ -1,0 +1,4 @@
+(executable
+ (public_name load_rooms)
+ (name main)
+ (libraries load_rooms core cohttp-lwt-unix async))
