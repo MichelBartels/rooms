@@ -1,5 +1,5 @@
 (library
  (name load_rooms)
- (libraries lwt.unix core yojson caqti caqti-lwt caqti-driver-sqlite3)
+ (libraries cohttp-lwt-unix lwt.unix core yojson caqti caqti-lwt caqti-driver-sqlite3 str)
  (preprocess
-  (pps ppx_deriving_yojson)))
+  (pps ppx_deriving_yojson ppx_deriving.show)))

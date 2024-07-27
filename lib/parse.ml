@@ -1,3 +1,5 @@
+open Core
+
 type room = {
   id: int;
   name: string;
@@ -11,6 +13,7 @@ type room = {
   address: string;
   site: string;
 }
+[@@deriving show]
 
 type resp_site = {
   id: int [@key "OptimeIndex"];
@@ -85,5 +88,4 @@ let flatten resp =
 let parse str =
     let json = Yojson.Safe.from_string str in
     let resp = resp_of_yojson_exn json in
-    resp.rooms |> List.length |> Int.to_string |> Out_channel.print_string;
-    resp
+    flatten resp
