@@ -146,7 +146,7 @@ let page_of_room ((room, review): Reviews.room_with_review) = Parse.(
   { parent; properties; children = List.map room.images ~f:(fun image -> {  type_ = "image"; image = { type_ = "external"; external_ = { url = Some image } } }) }
 )
 
-let notion_api_key = "secret_VnyhYTqmRxKTKDoVP5zKWWL5ss2lDbeViWJIVRRsjAQ"
+let notion_api_key = "<Notion API key>"
 
 let upload_room_lwt room =
   let page = page_of_room room in
