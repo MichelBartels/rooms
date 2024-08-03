@@ -1,11 +1,11 @@
 open Load_rooms.Parse
-(*open Load_rooms.Upload*)
+open Load_rooms.Upload
 open Load_rooms.Reviews
 
 let api_uri =
   Uri.of_string "https://pet.optime.cloud/api/booker/search/accommodation"
 
-let auth_key = "<INSERT KEY here>" (* you can get the key by inspecting the headers when you're on Booker *)
+let auth_key = "" (* you can get the key by inspecting the headers when you're on Booker *)
 
 
 let header =
@@ -22,4 +22,5 @@ let get =
     str in
   Lwt_main.run inner_async
 
-let () = get |> parse |> matches |> List.length |> print_int
+let rooms = get |> parse |> matches |> List.map (fun (room, review) -> (room.Load_rooms.Parse.name, (room, review)))
+let () = List.filter_map (fun room -> let room_ = List.assoc_opt room rooms in if Option.is_none room_ then print_endline room else (); room_) Load_rooms.Filter.rooms |> upload_rooms

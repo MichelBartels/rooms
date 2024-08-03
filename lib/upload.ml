@@ -125,7 +125,7 @@ type page = {
 }
 [@@deriving yojson]
 
-let notion_rooms_db_id = "f821d368ef3540f28803c1e946c0fb67"
+let notion_rooms_db_id = ""
 
 
 let page_of_room ((room, review): Reviews.room_with_review) = Parse.(
@@ -146,7 +146,7 @@ let page_of_room ((room, review): Reviews.room_with_review) = Parse.(
   { parent; properties; children = List.map room.images ~f:(fun image -> {  type_ = "image"; image = { type_ = "external"; external_ = { url = Some image } } }) }
 )
 
-let notion_api_key = "<Notion API key>"
+let notion_api_key = "secret_VnyhYTqmRxKTKDoVP5zKWWL5ss2lDbeViWJIVRRsjAQ"
 
 let upload_room_lwt room =
   let page = page_of_room room in
